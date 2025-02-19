@@ -1,13 +1,13 @@
-import { Injectable } from '@nestjs/common';
-import { Data } from '../data/podcasts';
+import { Inject, Injectable } from '@nestjs/common';
 import { data } from '../types/data.interface';
 
 @Injectable()
 export class ManagerService {
+  constructor(@Inject('Data') private readonly Data: data[]) {}
   getPodcasts(): data[] {
-    return Data;
+    return this.Data;
   }
   getPodcast(namePodcast: string): data[] {
-    return Data.filter((item) => item.podcastName === namePodcast);
+    return this.Data.filter((item) => item.podcastName === namePodcast);
   }
 }
