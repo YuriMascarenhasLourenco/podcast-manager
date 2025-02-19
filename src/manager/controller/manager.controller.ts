@@ -8,8 +8,8 @@ export class ManagerController {
   getPodcastsList() {
     this.managerService.getPodcasts();
   }
-  @Get()
-  getPodcast(@Query() podcastName: string) {
+  @Get('getPodcast')
+  getPodcast(@Query('podcastName') podcastName: string) {
     this.managerService.getPodcast(podcastName);
   }
 }
